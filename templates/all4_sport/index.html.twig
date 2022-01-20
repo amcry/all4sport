@@ -5,72 +5,38 @@
 
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    
-    html {
-        
-        text-align: center;
-        
-    }
-    table {
-        border: medium solid #6495ed;
-        border-collapse: collapse;
-        width: 100%;
-        position : center;
-        
-    }
-    
-    }
-     td {
-        font-family: sans-serif;
-        border: thin solid #6495ed;
-        width: 50%;
-        padding: 5px;
-        text-align: center;
-        background-color: ;
+    <div class="bg-light p-3">
+        <h1>Les produits</h1>
+    </div>
 
-    }
-    th {
-        font-family: monospace;
-        border: thin solid #6495ed;
-        width: 50%;
-        padding: 5px;
-        background-color: #EBF4FD;
-    }
-    .imga{
-        width: 250px;
-	    height: 250px;
-    } 
+     <div class="row">
+        {% for produit in produits %}
+            <div class="col-4 mt-4">
+                <div class="border border-dark rounded p-2 clearfix">
+                    <h2>
+                        {{ produit.PrNom }}
+                        -
+                        {{ produit.prixUHT }}
+                        €
+                    </h2>
+                    <img class="img-fluid rounded" src="{{ asset('img/'~produit.image)}}" alt="Image de {{ produit.PrNom }}">
+                    <hr>
+                    <a href="{{ path('all4_sport_detail', {'id' : produit.id}) }}" class="btn btn-success float-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+</svg>
+                        Voir le produit</a>
+                    <a href="{{ path('cart_add',{'id' : produit.id}) }}" class="btn btn-success float-right">
+                        <i class="fas fa-shopping-cart mr-1"></i>
+                        Ajouter
+                    </a>
+                </div>
 
-
-</style>
-
-
-
-    <table>
-        <tr>
-            <th>Nom</th>
-            {# <th>Disponibilité</th> #}
-            <th>Description</th>
-            {# <th>Le Prix</th> #}
-            <th>Visuel</th>
-            <th>Lien vers le produit</th>
-        </tr>
-        {%  for produit in produits %}
-        <tr>
-            <td>{{ produit.PrNom }}</td>
-            {# <td>{{ produit.quantite >0 ? "En Stock": "Rupture"}}</td> #}
-            <td>{{ produit.description | raw}}</td>
-            {# <td>{{ produit.prixUHT }} </td> #}
-            <td><img class="imga" src="{{ asset('img/'~produit.image)}}" alt "img produit"></td>
-            <td><a href="{{ path('all4_sport_detail', {id : produit.id}) }}">Voir le produit</a></td>  
-        </tr>
-
-
+            </div>
 
 
 
         {% endfor %}
+    </div>
 {% endblock %}

@@ -148,7 +148,4 @@ class Produits
 
         return $this;
     }
-
-
-
 }
