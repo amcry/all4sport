@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AvisRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,19 @@ class Avis
      * @ORM\Column(type="string", length=255)
      */
     private $pseudo;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Produits::class, inversedBy="avis")
+     */
+    private $produits;
+
+
+
+    public function __construct()
+    {
+        $this->produit = new ArrayCollection();
+        $this->produits = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,4 +104,19 @@ class Avis
 
         return $this;
     }
+
+    public function getProduits(): ?Produits
+    {
+        return $this->produits;
+    }
+
+    public function setProduits(?Produits $produits): self
+    {
+        $this->produits = $produits;
+
+        return $this;
+    }
+
+    
+
 }

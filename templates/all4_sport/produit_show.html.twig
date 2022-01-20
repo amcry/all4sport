@@ -3,32 +3,44 @@
 {% block title %}Produit {% endblock %}
 
 {% block body %}
-
-<h1>{{ pr_nom }}</h1>
+<style>
+.imga{
+        width: 250px;
+	    height: 250px;
+    } 
+</style>
+<h1>{{ produit.prnom }}</h1>
     <div>
-        le prix : {{ produit.prixUHT }}
+        le prix : {{ produit.prixUHT }} € TTC <br>
         Disponibilité : {{ produit.quantite >0 ? "En Stock": "Rupture"}}
-        Prix : {{ produit.prixUHT }}
+    
     </div>
 <p>
+    Description : <br>
     {{ produit.description | raw }}
 </p>
 
-{# <h2>Commentaires</h2>
-{% for commentaire in article.commentaires %}
+<div>
+    <p> Image du produit :</p><br>
+
+    <img class="imga" src="{{ asset('img/'~produit.image)}}" alt "img produit">
+
+</div>
+<br>
+<br>
+<h2>Avis : </h2>
+
+{% for avi in produit.avis %}
     <div>
-        {{ commentaire.pseudo }} , le {{ commentaire.dateCreation | date("d/m/Y h:i")}} <br>
-        <p>{{ commentaire.contenu }}</p>
-    </div> #}
+        {{ avi.titre }} , le {{ avi.dateAvis | date("d/m/Y h:i")}} <br>
+        <p>{{ avi.contenu }}</p>
+    </div> 
+{% else %}
+    Il n'y a pas d'avis sur le produit : {{ produit.prnom }}.
+{% endfor %}
 
-    
-
-{# {% else %}
-    Il n'y a pas de commentaires pour l'instant.
-{% endfor %} #}
-
- {# <h1>Ajout d'un nouveau commentaire</h1>
+ <h1>Ajout d'un avis</h1>
 <div>
 {{ form(form) }}
-</div> #}
+</div>
 {% endblock %}

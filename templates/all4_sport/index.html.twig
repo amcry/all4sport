@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello All4SportController!{% endblock %}
+{% block title %}Liste des Produits{% endblock %}
 
 
 
@@ -56,7 +56,7 @@
             <th>Description</th>
             {# <th>Le Prix</th> #}
             <th>Visuel</th>
-            <th>Lien vers l'article</th>
+            <th>Lien vers le produit</th>
         </tr>
         {%  for produit in produits %}
         <tr>
@@ -65,7 +65,7 @@
             <td>{{ produit.description | raw}}</td>
             {# <td>{{ produit.prixUHT }} </td> #}
             <td><img class="imga" src="{{ asset('img/'~produit.image)}}" alt "img produit"></td>
-            {# <td><a href="{{ path('produit_show', {id : produit.id}) }}">Voir l'article</a></td>   #}
+            <td><a href="{{ path('all4_sport_detail', {id : produit.id}) }}">Voir le produit</a></td>  
         </tr>
 
 
