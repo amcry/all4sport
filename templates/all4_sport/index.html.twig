@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello All4SportController!{% endblock %}
+
+
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    
+    html {
+        
+        text-align: center;
+        
+    }
+    table {
+        border: medium solid #6495ed;
+        border-collapse: collapse;
+        width: 100%;
+        position : center;
+        
+    }
+    
+    }
+     td {
+        font-family: sans-serif;
+        border: thin solid #6495ed;
+        width: 50%;
+        padding: 5px;
+        text-align: center;
+        background-color: ;
+
+    }
+    th {
+        font-family: monospace;
+        border: thin solid #6495ed;
+        width: 50%;
+        padding: 5px;
+        background-color: #EBF4FD;
+    }
+    .imga{
+        width: 250px;
+	    height: 250px;
+    } 
+
+
+</style>
+
+
+
+    <table>
+        <tr>
+            <th>Nom</th>
+            {# <th>Disponibilité</th> #}
+            <th>Description</th>
+            {# <th>Le Prix</th> #}
+            <th>Visuel</th>
+            <th>Lien vers l'article</th>
+        </tr>
+        {%  for produit in produits %}
+        <tr>
+            <td>{{ produit.PrNom }}</td>
+            {# <td>{{ produit.quantite >0 ? "En Stock": "Rupture"}}</td> #}
+            <td>{{ produit.description | raw}}</td>
+            {# <td>{{ produit.prixUHT }} </td> #}
+            <td><img class="imga" src="{{ asset('img/'~produit.image)}}" alt "img produit"></td>
+            {# <td><a href="{{ path('produit_show', {id : produit.id}) }}">Voir l'article</a></td>   #}
+        </tr>
+
+
+
+
+
+        {% endfor %}
+{% endblock %}

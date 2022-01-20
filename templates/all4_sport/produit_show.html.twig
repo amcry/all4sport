@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit {% endblock %}
+
+{% block body %}
+
+<h1>{{ pr_nom }}</h1>
+    <div>
+        le prix : {{ produit.prixUHT }}
+        Disponibilité : {{ produit.quantite >0 ? "En Stock": "Rupture"}}
+        Prix : {{ produit.prixUHT }}
+    </div>
+<p>
+    {{ produit.description | raw }}
+</p>
+
+{# <h2>Commentaires</h2>
+{% for commentaire in article.commentaires %}
+    <div>
+        {{ commentaire.pseudo }} , le {{ commentaire.dateCreation | date("d/m/Y h:i")}} <br>
+        <p>{{ commentaire.contenu }}</p>
+    </div> #}
+
+    
+
+{# {% else %}
+    Il n'y a pas de commentaires pour l'instant.
+{% endfor %} #}
+
+ {# <h1>Ajout d'un nouveau commentaire</h1>
+<div>
+{{ form(form) }}
+</div> #}
+{% endblock %}
