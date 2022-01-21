@@ -4,6 +4,7 @@ namespace App\Entity;
 
 
 use App\Repository\AvisRepository;
+use App\Entity\Produits;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -40,10 +41,10 @@ class Avis
      */
     private $pseudo;
 
-    // /**
-    //  * @ORM\ManyToOne(targetEntity=Produits::class, inversedBy="avis")
-    //  */
-    // private $produits;
+    /**
+     * @ORM\ManyToOne(targetEntity=Produits::class, inversedBy="avis")
+     */
+    private $produits;
 
 
     public function __construct()
